@@ -1,0 +1,32 @@
+# Secrets — never push real credentials
+.env
+.env.local
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+
+# Node / Next
+node_modules/
+.next/
+out/
+dist/
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local artifacts
+*.tmp
+.opencode/
+.agents/
+.stitch-mcp/
+stitch_export/

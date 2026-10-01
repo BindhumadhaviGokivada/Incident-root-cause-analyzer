@@ -1,0 +1,238 @@
+/* Google Fonts must be loaded first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #060e20;
+    color: #dae2fd;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Enterprise focus visibility (WCAG 2.2 AA) */
+  :focus-visible {
+    outline: 2px solid #adc6ff;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgba(173, 198, 255, 0.3);
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(66, 71, 84, 0.8); border-radius: 9999px; border: 2px solid transparent; background-clip: content-box; }
+  ::-webkit-scrollbar-thumb:hover { background: #8c909f; background-clip: content-box; }
+
+  code, pre { font-family: 'JetBrains Mono', monospace; }
+
+  /* Reduced motion: disable pulse/spin for sensitive users */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Print: clean postmortem/PDF export */
+  @media print {
+    aside, header, footer { display: none !important; }
+    main { padding: 0 !important; max-width: 100% !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+}
+
+@layer utilities {
+  .skip-link {
+    position: fixed;
+    top: -100px;
+    left: 12px;
+    z-index: 200;
+    background: #adc6ff;
+    color: #002e6a;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: top 0.15s;
+  }
+  .skip-link:focus {
+    top: 12px;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer components {
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    color: #c2c6d6;
+    transition: background-color 0.15s, color 0.15s;
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    background-color: #171f33;
+    color: #dae2fd;
+  }
+
+  .nav-link-active {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #222a3d;
+    color: #adc6ff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .card {
+    background-color: #131b2e;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    padding: 1rem;
+  }
+
+  .card-sm {
+    background-color: #131b2e;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    padding: 0.75rem;
+  }
+
+  .badge-critical {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: rgba(147, 0, 10, 0.4);
+    color: #ffdad6;
+    font-weight: 700;
+  }
+
+  .badge-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #2d3449;
+    color: #e9ddff;
+    font-weight: 700;
+  }
+
+  .badge-healthy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #2d3449;
+    color: #4edea3;
+    font-weight: 600;
+  }
+
+  .badge-ai {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+    background-color: #571bc1;
+    color: #c4abff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    line-height: 1;
+  }
+
+  .dot-critical { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #ffb4ab; }
+  .dot-warning  { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #d0bcff; }
+  .dot-healthy  { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #4edea3; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #adc6ff;
+    color: #002e6a;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { background-color: #d8e2ff; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #222a3d;
+    color: #dae2fd;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-secondary:hover { background-color: #571bc1; color: #c4abff; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #222a3d;
+    color: #dae2fd;
+    font-size: 12px;
+    transition: background-color 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-ghost:hover { background-color: #31394d; }
+
+  .status-strip-critical { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #ffb4ab; }
+  .status-strip-warning  { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #d0bcff; }
+  .status-strip-healthy  { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #4edea3; }
+}
